@@ -1,0 +1,26 @@
+###
+#@name Health Check
+GET {{ host }}/admin/health-check
+X-API-Key: {{ masterKey }}
+
+###
+# @name Generate API Key
+POST {{ host }}/admin/generate-api-key
+X-API-Key: {{ masterKey }}
+Content-Type: application/json
+
+{
+  "scopes": [
+    "sdk:true"
+  ]
+}
+
+> {%
+    client.global.set("apiUid", response.body["uid"]);
+    client.global.set("apiKey", response.body["key"]);
+%}
+
+###
+# @name Revoke API Key
+DELETE {{ host }}/admin/revoke-api-key/{{ apiUid }}
+X-API-Key: {{ masterKey }}

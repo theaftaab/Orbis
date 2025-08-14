@@ -1,0 +1,19 @@
+###
+#@name Health Check
+GET {{host}}/api/v1/health-check
+X-UPID: {{upid}}
+
+###
+#@name Create example
+POST {{host}}/api/v1/examples
+Content-Type: application/json
+X-UPID: {{upid}}
+
+{
+  "name": "{{upid}}",
+  "description": "This is an example"
+}
+
+> {%
+    client.global.set("exampleId", response.body["uid"]);
+%}
