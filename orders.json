@@ -1,0 +1,71 @@
+{
+    "orders": [
+        {
+            "order_id": "ORD-1001",
+            "priority": 1,
+            "type": "DELIVERY",
+            "location": {
+                "lat": 12.98,
+                "lng": 77.6,
+                "address": "Customer A"
+            },
+            "time_windows": [
+                {
+                    "start": "2025-08-12T10:00:00+05:30",
+                    "end": "2025-08-12T13:00:00+05:30"
+                }
+            ],
+            "service_time_min": 6,
+            "demand": {
+                "weight": 3,
+                "volume": 8,
+                "pieces": 1
+            },
+            "value": {
+                "cod_amount": 0,
+                "insured_value": 10000
+            },
+            "payment_mode": "PREPAID",
+            "required_vehicle_classes": [
+                "2W",
+                "VAN"
+            ],
+            "required_skills": [
+                "FRAGILE_OK"
+            ]
+        },
+        {
+            "order_id": "ORD-1002",
+            "priority": 2,
+            "type": "DELIVERY",
+            "location": {
+                "lat": 12.95,
+                "lng": 77.58,
+                "address": "Customer B"
+            },
+            "time_windows": [
+                {
+                    "start": "2025-08-12T09:30:00+05:30",
+                    "end": "2025-08-12T12:00:00+05:30"
+                }
+            ],
+            "service_time_min": 5,
+            "demand": {
+                "weight": 18,
+                "volume": 60,
+                "pieces": 8
+            },
+            "value": {
+                "cod_amount": 4500
+            },
+            "payment_mode": "COD",
+            "required_vehicle_classes": [
+                "VAN"
+            ],
+            "required_skills": []
+        }
+    ],
+    "solve": {
+        "mode": "SYNC"
+    }
+}
