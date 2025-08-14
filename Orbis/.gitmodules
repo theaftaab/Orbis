@@ -1,0 +1,3 @@
+[submodule "SharedBackend"]
+	path = SharedBackend
+	url = https://github.com/silo-prod/BackendServicesShared

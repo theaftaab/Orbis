@@ -1,0 +1,49 @@
+###
+#@name Health Check
+GET localhost:8000/api/v1/health-check
+
+###
+#@name Generate API Key
+POST http://localhost:8000/admin/generate-api-key
+X-API-Key: {{ masterKey }}
+Content-Type: application/json
+
+{
+  "scopes": [
+    "sdk:true"
+  ]
+}
+
+> {%
+    client.global.set("apiUid", response.body["uid"]);
+    client.global.set("apiKey", response.body["key"]);
+%}
+
+###
+#@name Auth Health Check
+GET localhost:8000/api/v1/auth-health-check
+X-API-Key: {{ apiKey }}
+
+
+###
+#@name Create Example 1
+POST localhost:8000/api/v1/create-example1?message=hello%20world
+X-API-Key: {{ apiKey }}
+
+###
+#@name Create Example 2
+POST localhost:8000/api/v1/create-example2?message=hello%20world%202
+X-API-Key: {{ apiKey }}
+
+hello world 2
+
+###
+#@name List Examples 1
+GET localhost:8000/api/v1/list-examples1
+X-API-Key: {{ apiKey }}
+
+
+###
+#@name List Examples 2
+GET localhost:8000/api/v1/list-examples2
+X-API-Key: {{ apiKey }}
