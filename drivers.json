@@ -1,0 +1,89 @@
+{
+    "drivers": [
+        {
+            "driver_id": "drv_2w_01",
+            "name": "Rider 01",
+            "phone": "+91XXXXXXXXXX",
+            "vehicle_class": "2W",
+            "home_depot_id": "dc_blr_1",
+            "capacity_overrides": {
+                "weight": 25,
+                "volume": 50,
+                "pieces": 40
+            },
+            "range_km": 80,
+            "cash_in_hand_limit": 10000,
+            "value_limit": 150000,
+            "skills": [
+                "FRAGILE_OK"
+            ],
+            "shift": {
+                "start": "2025-08-12T08:00:00+05:30",
+                "end": "2025-08-12T16:00:00+05:30",
+                "max_overtime_min": 30
+            },
+            "breaks": [
+                {
+                    "label": "LUNCH",
+                    "earliest": "2025-08-12T12:30:00+05:30",
+                    "latest": "2025-08-12T14:30:00+05:30",
+                    "duration_min": 30
+                }
+            ],
+            "costs": {
+                "fixed": 300,
+                "per_km": 6,
+                "per_hour": 60
+            },
+            "max_stops": 50,
+            "start_location": {
+                "lat": 12.9716,
+                "lng": 77.5946,
+                "address": "Bengaluru Depot"
+            },
+            "end_location": {
+                "lat": 12.9716,
+                "lng": 77.5946,
+                "address": "Bengaluru Depot"
+            },
+            "notes": "Prefers north cluster"
+        },
+        {
+            "driver_id": "drv_van_01",
+            "name": "Van Driver 01",
+            "phone": "+91YYYYYYYYYY",
+            "vehicle_class": "VAN",
+            "home_depot_id": "dc_blr_1",
+            "capacity_overrides": {
+                "weight": 800,
+                "volume": 3500,
+                "pieces": 300
+            },
+            "range_km": 250,
+            "cash_in_hand_limit": 50000,
+            "value_limit": 1000000,
+            "skills": [],
+            "shift": {
+                "start": "2025-08-12T07:30:00+05:30",
+                "end": "2025-08-12T17:30:00+05:30"
+            },
+            "breaks": [],
+            "costs": {
+                "fixed": 1200,
+                "per_km": 12,
+                "per_hour": 150
+            },
+            "max_stops": 70,
+            "start_location": {
+                "lat": 12.9716,
+                "lng": 77.5946,
+                "address": "Bengaluru Depot"
+            },
+            "end_location": {
+                "lat": 12.9716,
+                "lng": 77.5946,
+                "address": "Bengaluru Depot"
+            }
+        }
+    ]
+}
