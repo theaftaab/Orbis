@@ -18,14 +18,14 @@ Orbis solves the **Vehicle Routing Problem (VRP)** with:
 
 ```mermaid
 flowchart TD
-    A[Client] -->|1. Create Session| B[POST /sessions]
-    B -->|Returns session_id| C[Client]
-    C -->|2. Register Drivers| D[PUT /sessions/{id}/drivers]
-    D --> E[Client]
-    E -->|3. Register Orders| F[PUT /sessions/{id}/orders]
-    F -->|Trigger Solve| G[Solver Engine]
-    G -->|Optimized Routes| H[Orbis API]
-    H -->|Return Routes + Waypoints| I[Client & Driver App]
+    A[Client] -->|Create Session| B["POST /sessions"]
+    B -->|Returns session_id| A
+    A -->|Register Drivers| C["PUT /sessions/ID/drivers"]
+    C --> A
+    A -->|Register Orders| D["PUT /sessions/ID/orders"]
+    D -->|Trigger Solve| E[Solver Engine]
+    E -->|Optimized Routes| F[Orbis API]
+    F -->|Return Routes + Waypoints| G[Client & Driver App]
 ```
 
 ---
