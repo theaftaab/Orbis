@@ -1,0 +1,85 @@
+{
+    "client_run_ref": "run-2025-08-12-AM",
+    "planning_date": "2025-08-12",
+    "units": {
+        "distance": "KM",
+        "weight": "KG",
+        "volume": "L",
+        "currency": "INR"
+    },
+    "depot": {
+        "id": "dc_blr_1",
+        "name": "Bengaluru DC",
+        "location": {
+            "lat": 12.9716,
+            "lng": 77.5946,
+            "address": "MG Road, Bengaluru"
+        },
+        "time_window": {
+            "start": "2025-08-12T06:00:00+05:30",
+            "end": "2025-08-12T22:00:00+05:30"
+        }
+    },
+    "vehicle_classes": [
+        {
+            "code": "2W",
+            "display": "Two Wheeler",
+            "capacity": {
+                "weight": 25,
+                "volume": 50,
+                "pieces": 40
+            },
+            "range_km": 80
+        },
+        {
+            "code": "VAN",
+            "display": "Van",
+            "capacity": {
+                "weight": 800,
+                "volume": 3500,
+                "pieces": 300
+            },
+            "range_km": 250
+        }
+    ],
+    "global_policies": {
+        "variant": "VRPTW",
+        "hard_time_windows": true,
+        "allow_split_deliveries": false,
+        "max_route_duration_min": 540,
+        "max_stops_per_route": 60
+    },
+    "distance_matrix": {
+        "provider": "GOOGLE_MAPS",
+        "api_key_alias": "gmaps_primary",
+        "travel_mode": "DRIVING",
+        "traffic_model": "BEST_GUESS",
+        "departure_time": "2025-08-12T08:00:00+05:30",
+        "avoid": [
+            "TOLLS"
+        ]
+    },
+    "objective": {
+        "primary": "MIN_TRAVEL_TIME",
+        "secondary": [
+            "ON_TIME_DELIVERY",
+            "BALANCE_WORKLOAD"
+        ],
+        "late_penalty_per_min": 5,
+        "unserved_penalty": 2500
+    },
+    "algorithm": {
+        "initial_clustering": "AUTO",
+        "solver": "AUTO",
+        "time_limit_sec": 45,
+        "num_threads": 8,
+        "random_seed": 42
+    },
+    "webhook": {
+        "url": "https://example.com/orbis/callback",
+        "secret": "whsec_***"
+    },
+    "metadata": {
+        "batch_label": "daily-run-2025-08-12"
+    }
+}
