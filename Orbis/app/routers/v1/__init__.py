@@ -6,6 +6,7 @@ from models import *
 
 from .example import router as example_router
 from .handshake import router as handshake_router
+from .drivers import router as drivers_router
 
 settings = get_settings()
 engine = get_engine(settings.name)
@@ -13,6 +14,7 @@ engine = get_engine(settings.name)
 router = APIRouter()
 router.include_router(example_router)
 router.include_router(handshake_router)
+router.include_router(drivers_router)
 
 
 @router.get("/health-check", response_model=HealthCheckResponse)

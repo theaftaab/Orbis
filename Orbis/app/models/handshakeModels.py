@@ -21,3 +21,8 @@ class HandshakeResponse(BaseModel):
     status: str
     message: str
     timestamp: str
+
+__all__ = [
+    "HandshakeRequest",
+    "HandshakeResponse",
+]
