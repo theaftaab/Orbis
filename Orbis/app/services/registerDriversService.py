@@ -25,8 +25,23 @@ class RegisterDriversService:
     def _save_drivers(self, drivers: Dict[str,Any]) -> None:
         with open(self.drivers_file_path, 'w') as f:
             json.dump(drivers, f, indent=4)
+    def is_valid_session(self, session_id: str, session_file_path: str = "sessions.json") -> bool:
+        """
+        Checks if the given session_id exists as a key in sessions.json.
+        """
+        session_path = Path(session_file_path)
+        if not session_path.exists():
+            return False
+        try:
+            with open(session_path, "r") as f:
+                data = json.load(f)
+                return session_id in data
+        except (json.JSONDecodeError, FileNotFoundError):
+            return False
 
-    def register_drivers(self, request: Drivers) -> List[str]:
+    def register_drivers(self,session_id :str, request: Drivers) -> List[str]:
+        if not self.is_valid_session(session_id):
+            raise ValueError(f"Session ID {session_id} is not valid or does not exist.")
         drivers = self._load_drivers()
         drivers_map = {}
         for driver_item in drivers:
@@ -34,12 +49,11 @@ class RegisterDriversService:
                 drivers_map[driver_item['driver_id']] = driver_item
 
         upserted_ids: List[str] = []
-        
         # Iterate through the list of driver objects from the request
         for driver in request:
             driver_dict = driver.model_dump()
+            driver_dict["session_id"] = session_id
             driver_id = driver_dict["driver_id"]
-            
             # Add or update the driver in our map
             drivers_map[driver_id] = driver_dict
             upserted_ids.append(driver_id)
