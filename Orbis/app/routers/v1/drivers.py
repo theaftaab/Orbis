@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-
+import random , string 
 from models import *
 from services import *
 
@@ -18,4 +18,14 @@ async def upsert_drivers(session_id: str, payload: RegisterDriversRequest):
         status="ok",
     )
 
-
+@router.post("/{session_id}/orders", response_model=OrderResponse)
+async def dummy_drivers(session_id: str , payload: OrderRequest):
+    character_set = string.ascii_uppercase + string.digits
+    random_characters = [random.choice(character_set) for _ in range(12)] 
+    run_id = "run_"+''.join(random_characters)
+    orders_total = len(payload.orders)
+    order_service = OrderService()
+    order_service.register_orders(session_id,payload)
+    OrderRes = order_service.dummy_response(run_id, orders_total)
+    return OrderRes
+       

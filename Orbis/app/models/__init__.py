@@ -4,6 +4,7 @@ from .generateApiKeyModels import *
 from .healthCheckModels import *
 from .handshakeModels import *
 from .registerDriversModels import *
+from .orderModels import *
 
 
 class ListResponse[ModelType: BaseModel](BaseModel):
